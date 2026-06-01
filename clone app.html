@@ -1,0 +1,677 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luxury Fashion</title>
+<link href="https://i.pinimg.com/736x/c8/1c/31/c81c31c4e59d00393b3dc5abff4d285a.jpg" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#fff;
+    color:#111;
+    font-family:'Inter',sans-serif;
+    overflow-x:hidden;
+}
+
+/* NAVBAR */
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:25px 60px;
+    z-index:1000;
+    transition:0.4s;
+}
+
+nav.scrolled{
+    background:white;
+    box-shadow:0 2px 20px rgba(231, 229, 229, 0.08);
+}
+
+.logo{
+    font-size:34px;
+    letter-spacing:10px;
+    font-weight:600;
+    font-family:'Playfair Display',serif;
+}
+
+.nav-links{
+    display:flex;
+    gap:40px;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:#e7e5e5;
+    font-size:14px;
+    letter-spacing:2px;
+    position:relative;
+}
+
+.nav-links a::after{
+    content:'';
+    position:absolute;
+    bottom:-5px;
+    left:0;
+    width:0%;
+    height:1px;
+    background:#111;
+    transition:0.4s;
+}
+
+.nav-links a:hover::after{
+    width:100%;
+}
+
+/* HERO */
+.hero{
+    height:100vh;
+    position:relative;
+    overflow:hidden;
+}
+
+.hero video{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.overlay{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.25);
+}
+
+.hero-content{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    text-align:center;
+    color:white;
+}
+
+.hero-content h1{
+    font-size:90px;
+    letter-spacing:8px;
+    font-family:'Playfair Display',serif;
+    margin-bottom:20px;
+    animation:fadeUp 1.2s ease;
+}
+
+.hero-content p{
+    font-size:18px;
+    letter-spacing:4px;
+    margin-bottom:35px;
+    animation:fadeUp 1.6s ease;
+}
+
+.hero-content button{
+    padding:15px 45px;
+    border:none;
+    background:white;
+    color:rgb(30, 29, 29);
+    letter-spacing:3px;
+    cursor:pointer;
+    transition:0.4s;
+    animation:fadeUp 2s ease;
+}
+
+.hero-content button:hover{
+    background:black;
+    color:white;
+}
+
+/* COLLECTION */
+.collection{
+    padding:120px 8%;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:70px;
+}
+
+.section-title h2{
+    font-size:50px;
+    font-family:'Playfair Display',serif;
+    margin-bottom:15px;
+}
+
+.section-title p{
+    letter-spacing:3px;
+    color:#666;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:35px;
+}
+
+.card{
+    position:relative;
+    overflow:hidden;
+    cursor:pointer;
+}
+
+.card img{
+    width:100%;
+    height:500px;
+    object-fit:cover;
+    transition:0.6s;
+}
+
+.card:hover img{
+    transform:scale(1.08);
+}
+
+.card-content{
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:100%;
+    padding:30px;
+    color:white;
+    background:linear-gradient(transparent,rgba(0,0,0,0.75));
+}
+
+.card-content h3{
+    font-size:28px;
+    margin-bottom:10px;
+    font-family:'Playfair Display',serif;
+}
+
+.card-content p{
+    letter-spacing:2px;
+    font-size:13px;
+}
+
+/* FEATURE */
+.feature{
+    height:90vh;
+    background:url('https://i.pinimg.com/1200x/c5/d7/43/c5d7436936181f7b4298f89823291f9a.jpg') center/cover;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:white;
+    position:relative;
+}
+
+.feature::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.35);
+}
+
+.feature-content{
+    position:relative;
+    z-index:2;
+}
+
+.feature-content h2{
+    font-size:70px;
+    margin-bottom:20px;
+    font-family:'Playfair Display',serif;
+}
+
+.feature-content button{
+    padding:15px 40px;
+    border:1px solid white;
+    background:transparent;
+    color:white;
+    letter-spacing:3px;
+    cursor:pointer;
+    transition:0.4s;
+}
+
+.feature-content button:hover{
+    background:white;
+    color:black;
+}
+
+/* FOOTER */
+footer{
+    background:#111;
+    color:white;
+    padding:70px 8%;
+}
+
+.footer-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:40px;
+}
+
+.footer-col h4{
+    margin-bottom:20px;
+    letter-spacing:2px;
+}
+
+.footer-col p,
+.footer-col a{
+    color:#ccc;
+    text-decoration:none;
+    display:block;
+    margin-bottom:12px;
+    font-size:14px;
+}
+
+.footer-bottom{
+    text-align:center;
+    margin-top:60px;
+    color:#777;
+    font-size:13px;
+}
+
+/* ANIMATION */
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(50px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.reveal{
+    opacity:0;
+    transform:translateY(60px);
+    transition:1s;
+}
+
+.reveal.active{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* MOBILE */
+@media(max-width:768px){
+
+nav{
+    padding:20px;
+}
+
+.nav-links{
+    gap:15px;
+}
+
+.hero-content h1{
+    font-size:50px;
+}
+
+.feature-content h2{
+    font-size:45px;
+}
+
+.section-title h2{
+    font-size:38px;
+}
+
+.card img{
+    height:420px;
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">PRADA</div>
+  <div class="nav-links">
+    <a href="index.html">HOME</a>
+    <a href="men.html">MEN</a>
+    <a href="women.html">WOMEN</a>
+    <a href="bags.html">BAGS</a>
+  </div>
+</nav>
+
+
+
+<!-- HERO -->
+<section class="hero">
+
+    <img src="https://i.pinimg.com/736x/c8/1c/31/c81c31c4e59d00393b3dc5abff4d285a.jpg" 
+     alt="Image"
+     style="width:100%; height:auto;">
+
+    <div class="overlay"></div>
+
+    <div class="hero-content">
+        <h1>PRADA</h1>
+        <p>SPRING SUMMER 2026</p>
+        <button>DISCOVER</button>
+    </div>
+
+</section>
+
+<!-- COLLECTION -->
+<section class="collection reveal">
+
+    <div class="section-title">
+        <h2>Latest Collection</h2>
+        <p>MODERN LUXURY ESSENTIALS</p>
+    </div>
+
+    <div class="grid">
+
+        <div class="card">
+            <img src="https://i.pinimg.com/736x/a9/e5/7e/a9e57e0f4178bf3b4fb38ed094b2df67.jpg">
+            <div class="card-content">
+                <h3>Women</h3>
+                <p>EXPLORE COLLECTION</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://i.pinimg.com/1200x/eb/90/1b/eb901bfc25d76a8ce128cabc7b11ca29.jpg">
+            <div class="card-content">
+                <h3>Runway</h3>
+                <p>NEW ARRIVALS</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://i.pinimg.com/736x/61/65/21/616521abd678e164049fad66507f8d8f.jpg">
+            <div class="card-content">
+                <h3>Accessories</h3>
+                <p>LUXURY EDITION</p>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FEATURE -->
+<section class="feature reveal">
+
+    <div class="feature-content">
+        <h2>Elegance Redefined</h2>
+        <button>VIEW CAMPAIGN</button>
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+
+    <div class="footer-grid">
+
+        <div class="footer-col">
+            <h4>ABOUT</h4>
+            <p>Luxury fashion house inspired design.</p>
+            <p>Premium aesthetic experience.</p>
+        </div>
+
+        <div class="footer-col">
+            <h4>SHOP</h4>
+            <a href="#">Women</a>
+            <a href="#">Men</a>
+            <a href="#">Shoes</a>
+            <a href="#">Bags</a>
+        </div>
+
+        <div class="footer-col">
+            <h4>SOCIAL</h4>
+            <a href="#">Instagram</a>
+            <a href="#">YouTube</a>
+            <a href="#">Pinterest</a>
+        </div>
+
+        <div class="footer-col">
+            <h4>CONTACT</h4>
+            <p>luxury@fashion.com</p>
+            <p>+91 98765 43210</p>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        © 2026 Luxury Fashion Clone. Designed for educational purpose.
+    </div>
+
+</footer>
+
+<script>
+
+// NAVBAR EFFECT
+window.addEventListener('scroll',()=>{
+
+    const nav = document.getElementById('navbar');
+
+    if(window.scrollY > 50){
+        nav.classList.add('scrolled');
+    }
+    else{
+        nav.classList.remove('scrolled');
+    }
+
+});
+
+// REVEAL ANIMATION
+function reveal(){
+
+    const reveals = document.querySelectorAll('.reveal');
+
+    reveals.forEach((element)=>{
+
+        const windowHeight = window.innerHeight;
+        const elementTop = element.getBoundingClientRect().top;
+
+        if(elementTop < windowHeight - 100){
+            element.classList.add('active');
+        }
+
+    });
+}
+
+window.addEventListener('scroll', reveal);
+reveal();
+
+// CATEGORY NAVIGATION
+const navLinks = document.querySelectorAll('.nav-links a');
+
+navLinks.forEach(link => {
+
+    link.addEventListener('click', (e)=>{
+
+        e.preventDefault();
+
+        const category = e.target.innerText;
+
+        let message = '';
+
+        if(category === 'MEN'){
+            message = `
+            <div class="popup-content">
+                <h2>Men Collection</h2>
+                <div class="popup-grid">
+                    <div class="popup-card">
+                        <img src="https://i.pinimg.com/236x/00/e8/ff/00e8ffff8c88b8df5a2dbc5aafee9be1.jpg">
+                        <h3>Luxury Jacket</h3>
+                        <button>Order Now</button>
+                    </div>
+
+                    <div class="popup-card">
+                        <img src="https://i.pinimg.com/1200x/45/14/c5/4514c5d697799b061cdb4a4b04dc3fe3.jpg">
+                        <h3>Premium Suit</h3>
+                        <button>Order Now</button>
+                    </div>
+                </div>
+            </div>
+            `;
+        }
+
+        else if(category === 'WOMEN'){
+            message = `
+            <div class="popup-content">
+                <h2>Women Collection</h2>
+                <div class="popup-grid">
+                    <div class="popup-card">
+                        <img src="https://i.pinimg.com/1200x/d5/6e/71/d56e71e9a5cbcd874491db7ccdd12c42.jpg">
+                        <h3>Luxury Dress</h3>
+                        <button>Order Now</button>
+                    </div>
+
+                    <div class="popup-card">
+                        <img src="https://i.pinimg.com/736x/91/be/c2/91bec22a9a01750d803fb91365657111.jpg">
+                        <h3>Classic Fashion</h3>
+                        <button>Order Now</button>
+                    </div>
+                </div>
+            </div>
+            `;
+        }
+
+        else if(category === 'BAGS'){
+            message = `
+            <div class="popup-content">
+                <h2>Luxury Bags</h2>
+                <div class="popup-grid">
+                    <div class="popup-card">
+                        <img src="https://i.pinimg.com/736x/9b/75/44/9b75444d52ebbb36a3800d8bc553608a.jpg">
+                        <h3>Leather Bag</h3>
+                        <button>Order Now</button>
+                    </div>
+
+                    <div class="popup-card">
+                        <img src="https://i.pinimg.com/736x/ad/d6/11/add61100dbc368eef559734e56522ad9.jpg">
+                        <h3>Mini Bag</h3>
+                        <button>Order Now</button>
+                    </div>
+                </div>
+            </div>
+            `;
+        }
+
+        document.getElementById('popup').innerHTML = message;
+        document.getElementById('popup').classList.add('show-popup');
+
+    });
+
+});
+
+// CLOSE POPUP
+document.getElementById('closePopup').addEventListener('click', ()=>{
+    document.getElementById('popup').classList.remove('show-popup');
+});
+
+</script>
+
+<!-- POPUP -->
+<div class="popup" id="popup">
+    <span class="close-btn" id="closePopup">×</span>
+</div>
+
+<style>
+
+.popup{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.85);
+    z-index:2000;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    opacity:0;
+    pointer-events:none;
+    transition:0.5s;
+    padding:40px;
+}
+
+.show-popup{
+    opacity:1;
+    pointer-events:auto;
+}
+
+.popup-content{
+    width:100%;
+    max-width:1100px;
+    color:white;
+}
+
+.popup-content h2{
+    font-size:55px;
+    margin-bottom:40px;
+    font-family:'Playfair Display',serif;
+}
+
+.popup-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:30px;
+}
+
+.popup-card{
+    background:#111;
+    overflow:hidden;
+}
+
+.popup-card img{
+    width:100%;
+    height:400px;
+    object-fit:cover;
+}
+
+.popup-card h3{
+    padding:20px;
+    font-size:24px;
+}
+
+.popup-card button{
+    margin:0 20px 25px;
+    padding:12px 30px;
+    border:none;
+    background:white;
+    color:black;
+    cursor:pointer;
+    letter-spacing:2px;
+    transition:0.4s;
+}
+
+.popup-card button:hover{
+    background:#d6d6d6;
+}
+
+.close-btn{
+    position:absolute;
+    top:30px;
+    right:50px;
+    font-size:50px;
+    color:white;
+    cursor:pointer;
+}
+
+</style>
+
+</body>
+</html>
+```
+
